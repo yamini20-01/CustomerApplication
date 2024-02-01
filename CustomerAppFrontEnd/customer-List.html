@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Customer List</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        #addCustomerButton {
+            align-self: flex-start;
+            margin-left: 30px;
+            background-color: beige;
+        }
+        #authenticateButton{
+            align-self: flex-end;
+            margin-right: 30px;
+            background-color: bisque;
+        }
+        #searchbutton{
+
+            background-color: rgb(241, 188, 123);
+        }
+        
+        #buttonContainer {
+            display: flex;
+            justify-content: space-between;
+            width: 80%; /* Adjust the width as needed */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Customer List</h1>
+    <br>
+    <div id="buttonContainer">
+    <button id="addCustomerButton" onclick="navigateToAddCustomer()">Add New Customer</button>
+    <div id="searchContainer">
+        <label for="searchInput">Search</label>
+        <input type="text" id="searchInput" oninput="searchCustomers()" placeholder="Enter city,state,address&#128269; etc">
+       
+    </div>
+    <button id="authenticateButton">Sync</button>
+   
+    </div>
+
+    
+
+    <table id="customerTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Street</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="customerTableBody"></tbody>
+    </table>
+    <br>
+    
+    <script>
+    document.getElementById('authenticateButton').addEventListener('click', authenticateAndStoreCustomerList);
+    </script>    
+    <script src="CustomerList-Script.js"></script>
+    <script src="SyncData.js"></script>
+</body>
+</html>
